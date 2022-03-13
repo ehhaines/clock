@@ -1,3 +1,4 @@
+
 const canvas = document.querySelector('.myCanvas');
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
@@ -61,11 +62,18 @@ let time = new Time(500);
 
 setInterval(() => {
   ctx.clearRect(0, 0, width, height);
-  ctx.fillRect(0, 0, width, height);
   now = new Date();
   let sec = now.getSeconds();
   let min = now.getMinutes();
   let hou = now.getHours();
+  if (hou >= 6 && hou <= 18) {
+    ctx.fillStyle = 'rgb(237, 216, 28)';
+  }
+  else {
+    ctx.fillStyle = 'rgb(2, 9, 46)';
+  }
+  ctx.fillRect(0, 0, width, height);
+
   if (usable_rad - 120 >= 150) {
     time.displayTime(hou, min, sec);
   }
@@ -73,4 +81,3 @@ setInterval(() => {
   minutes.buildCircle(min, 60);
   hours.buildCircle(hou, 24);
 }, 200);
-
